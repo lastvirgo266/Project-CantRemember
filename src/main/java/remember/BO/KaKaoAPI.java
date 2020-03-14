@@ -21,13 +21,15 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
 public class KakaoAPI {
 
-String API_KEY="70786c28ac3420bba7084c85209beb27";
+	@Value("${KAKAO.API.KEY}")
+	String API_KEY;
 	
 	public String getAccessToken(String authorize_code) {
 		

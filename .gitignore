@@ -5,6 +5,9 @@ build/
 !**/src/main/**
 !**/src/test/**
 
+### config info ###
+src/main/resources/kakao.properties
+
 ### STS ###
 .apt_generated
 .classpath

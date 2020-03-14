@@ -33,6 +33,7 @@ public class RestApiController {
 	@RequestMapping(value="/main", method= RequestMethod.GET)
 	public RedirectView Main() {
 		RedirectView redirectView = new RedirectView();
+		System.out.println("KEY : " + login.getURL());
 		redirectView.setUrl(login.getURL());
 		return redirectView;
 	}
