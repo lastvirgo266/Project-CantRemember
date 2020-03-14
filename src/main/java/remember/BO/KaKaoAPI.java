@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.HashMap;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,8 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class KakaoAPI {
 
-@Value("${KAKAO.API.KEY}")
-String API_KEY="969ec7d94f0f469411e3b39365ac2d99";
+String API_KEY="70786c28ac3420bba7084c85209beb27";
 	
 	public String getAccessToken(String authorize_code) {
 		
@@ -89,14 +90,23 @@ String API_KEY="969ec7d94f0f469411e3b39365ac2d99";
 	}
 	
 	
+	//유저의 정보를 카카오 API에 저장시킴
 	public void SaveUserInfo(String access_Token) {
 
 		try {
-		String reqURL = "https://kauth.kakao.com/v1/user/update_profile";
-		String param = "properties="+URLEncoder.encode("{\"game\" : \"Good\"}", "UTF-8");
-	
+			String reqURL = "https://kapi.kakao.com/v1/user/update_profile";
+		
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("game", "diablow");
+		
+			ObjectMapper JACKSON_OBJECT_MAPPER = new ObjectMapper();
+		
+			String param = "properties="+JACKSON_OBJECT_MAPPER.writeValueAsString(map);
+			
 			URL url = new URL(reqURL);
 			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+			
+			
 			
 			//POST config
 			conn.setRequestMethod("POST");
@@ -104,14 +114,13 @@ String API_KEY="969ec7d94f0f469411e3b39365ac2d99";
 			
 			//HeaderConfig
 			conn.setRequestProperty("Authorization", "Bearer "+ access_Token);
-			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-			
+			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			conn.setRequestProperty("charset", "utf-8");
 			
 			//parameter Stream sending
-			DataOutputStream bw = new DataOutputStream(conn.getOutputStream());
-			//sb.append(param);
-			bw.writeBytes("properties={\"game\" : \"Good\"}");
-			bw.flush();
+			OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());
+			writer.write(param);
+			writer.flush();
 			
 			int responseCode = conn.getResponseCode();
 			log.info("responose : "+responseCode);
@@ -124,21 +133,10 @@ String API_KEY="969ec7d94f0f469411e3b39365ac2d99";
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            System.out.println("response body : " + result);
-            
-            
-            //    Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
-//            JsonParser parser = new JsonParser();
-//            JsonElement element = parser.parse(result);
-//            
-//            String id =  element.getAsJsonObject().get("id").getAsString();
-//            
-//            System.out.println("id : " + id);
-            
  
             
             br.close();
-            bw.close();
+            writer.close();
 			
 		} catch(IOException e) {
 			e.printStackTrace();	

@@ -41,7 +41,7 @@ public class RestApiController {
 	public void KaKaoLogin(@RequestParam("code") String code ) {
 		
 		String access_Token = kakao.getAccessToken(code);
-		log.info("code  : " + code + "Aceess : " + access_Token);
+		log.info("code  : " + code +"\n"+ "Aceess : " + access_Token+"\n");
 		
 		kakao.SaveUserInfo(access_Token);
 	}
