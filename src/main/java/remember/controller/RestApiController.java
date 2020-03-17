@@ -24,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 import remember.BO.KakaoAPI;
 import remember.BO.KakaoAuth;
 import remember.DTO.GameDto;
+import remember.entity.GameEntity;
 
 @Slf4j
 @RestController
@@ -89,8 +90,9 @@ public class RestApiController {
 	
 	//Game Password Create
 	@RequestMapping(value="/game/create", method = RequestMethod.POST)
-	public void GameSave(@RequestBody GameDto game, @CookieValue("access_token") String access_token) {
-		kakao.SaveGameInfo(access_token, game);
+	public void GameSave(@RequestBody GameEntity game, @CookieValue("id") int id) {
+		game.setUserId(id);
+		kakao.saveGameInfoJpa(game);
 	}
 	
 	

@@ -15,6 +15,7 @@ import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import remember.DTO.GameDto;
+import remember.entity.GameEntity;
+import remember.service.GameService;
 
 @Slf4j
 @Service
@@ -33,6 +36,9 @@ public class KakaoAPIImpl implements KakaoAPI {
 
 	@Value("${KAKAO.API.KEY}")
 	String API_KEY;
+	
+	@Autowired
+	GameService gameService;
 	
 	@Override
 	public List<String> getAccessToken(String authorize_code) {
@@ -102,7 +108,7 @@ public class KakaoAPIImpl implements KakaoAPI {
 	
 	//유저의 정보를 카카오 API에 저장시킴
 	@Override
-	public void SaveGameInfo(String access_Token, GameDto game) {
+	public void SaveGameInfoToKakao(String access_Token, GameDto game) {
 
 		try {
 			String reqURL = "https://kapi.kakao.com/v1/user/update_profile";
@@ -233,6 +239,11 @@ public class KakaoAPIImpl implements KakaoAPI {
 			e.printStackTrace();	
 		}
 		return id;
+	}
+	
+	@Override
+	public void saveGameInfoJpa(GameEntity game) {
+		gameService.createGame(game);
 	}
 	
 
