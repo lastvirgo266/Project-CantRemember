@@ -22,7 +22,7 @@ public class GameEntity {
 	private int id;
 	
 	
-	private String userNickname;
+	private int userId;
 	
 	private String game;
 	
