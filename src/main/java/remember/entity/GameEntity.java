@@ -20,8 +20,7 @@ public class GameEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)//기본키의 생성전략을 설정(DB에서 제공하는 기본키 생성전략을 따르게됨)
 	private int id;
-	
-	
+
 	private int userId;
 	
 	private String game;
