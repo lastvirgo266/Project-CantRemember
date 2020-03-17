@@ -57,6 +57,8 @@ public class RestApiController {
 		List<String> tokens = kakao.getAccessToken(code);
 		log.info("code  : " + code +"\n"+ "Aceess : " + tokens.get(0)+"\n" + "Refresh : " + tokens.get(1));
 		
+		
+		
 		//ÄíÅ° ¼³Á¤
 		Cookie acces_token = new Cookie("access_token", tokens.get(0));
 		Cookie refresh_token = new Cookie("refresh_token", tokens.get(1));
