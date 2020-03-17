@@ -13,6 +13,8 @@ public interface KakaoAPI {
 	
 	public void logout(String access_Token);
 	
+	public String getId(String access_Token);
+	
 	
 
 }

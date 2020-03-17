@@ -164,9 +164,75 @@ public class KakaoAPIImpl implements KakaoAPI {
 			int responseCode = conn.getResponseCode();
 			log.info("responose : "+responseCode);
 			
+			
 		} catch(IOException e) {
 			e.printStackTrace();	
 		}
+	}
+	
+	
+	@Override
+	public String getId(String access_Token) {
+		
+		String id="";
+
+		try {
+			String reqURL = "https://kapi.kakao.com/v2/user/me";
+			
+			// -d config
+			List<String> data = new ArrayList<String>();
+			data.add("id");
+		
+			// data convert
+			ObjectMapper JACKSON_OBJECT_MAPPER = new ObjectMapper();
+		
+			String param = "properties="+JACKSON_OBJECT_MAPPER.writeValueAsString(data);
+			
+			URL url = new URL(reqURL);
+			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+			
+			
+			
+			//POST config
+			conn.setRequestMethod("GET");
+			conn.setDoOutput(true);
+			
+			//HeaderConfig
+			conn.setRequestProperty("Authorization", "Bearer "+ access_Token);
+			
+			//parameter Stream sending
+			OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());
+			writer.write(param);
+			writer.flush();
+			
+			int responseCode = conn.getResponseCode();
+			log.info("responose : "+responseCode);
+            writer.close();
+            
+	           //    요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
+	         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	         String line = "";
+	         String result = "";
+	         
+	         while ((line = br.readLine()) != null) {
+	             result += line;
+	         }
+	         System.out.println("response body : " + result);
+	         
+	         
+	         //    Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
+	         JsonParser parser = new JsonParser();
+	         JsonElement element = parser.parse(result);
+	         
+	         id = element.getAsJsonObject().get("access_token").getAsString();
+	         br.close();
+	         
+            
+			
+		} catch(IOException e) {
+			e.printStackTrace();	
+		}
+		return id;
 	}
 	
 

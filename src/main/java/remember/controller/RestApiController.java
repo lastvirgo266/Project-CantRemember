@@ -62,13 +62,17 @@ public class RestApiController {
 		//쿠키 설정
 		Cookie acces_token = new Cookie("access_token", tokens.get(0));
 		Cookie refresh_token = new Cookie("refresh_token", tokens.get(1));
+		Cookie id = new Cookie("id", kakao.getId(tokens.get(0)));
 		
+		//시간설정 및 갱신설정
 		acces_token.setMaxAge(60*60*12);
 		refresh_token.setMaxAge(60*60*24*12);
+		id.setMaxAge(60*60*24*12);
 		
 		acces_token.setPath("/");
 		refresh_token.setPath("/");
 		
+		response.addCookie(id);
 		response.addCookie(acces_token);
 		response.addCookie(refresh_token);
 		
