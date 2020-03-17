@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class KakaoLogin {
+public class KakaoAuth {
 	
 	@Value("${KAKAO.API.KEY}")
 	String API_KEY;
