@@ -5,6 +5,8 @@ import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +31,12 @@ public class RestApiController {
 	
 	@Autowired
 	private KakaoLogin login;
+	
+	@RequestMapping(value="/test", method= RequestMethod.GET)
+	public ResponseEntity<?> Test() {
+		log.info("Test");
+		return  new ResponseEntity<>(HttpStatus.OK);
+	}
 	
 	@RequestMapping(value="/main", method= RequestMethod.GET)
 	public RedirectView Main() {
