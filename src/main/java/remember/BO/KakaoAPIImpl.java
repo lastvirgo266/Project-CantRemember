@@ -145,5 +145,29 @@ public class KakaoAPIImpl implements KakaoAPI {
 	}
 	
 	
+	@Override
+	public void logout(String access_Token) {
+		try {
+			String reqURL = "https://kapi.kakao.com/v1/user/logout";
+			URL url = new URL(reqURL);
+			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+			
+			
+			
+			//connection config
+			conn.setRequestMethod("GET");
+			conn.setDoOutput(true);
+			
+			//HeaderConfig
+			conn.setRequestProperty("Authorization", "Bearer "+ access_Token);
+			
+			int responseCode = conn.getResponseCode();
+			log.info("responose : "+responseCode);
+			
+		} catch(IOException e) {
+			e.printStackTrace();	
+		}
+	}
+	
 
 }

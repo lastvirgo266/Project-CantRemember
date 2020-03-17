@@ -72,6 +72,15 @@ public class RestApiController {
 		
 	}
 	
+	//logout
+	@RequestMapping(value="/logout", method = RequestMethod.GET)
+	public void KaKaoLogout(@CookieValue("access_token") String access_token) {
+		kakao.logout(access_token);
+		log.info("logout");
+	}
+	
+	
+	
 	//Game Password Create
 	@RequestMapping(value="/game/create", method = RequestMethod.POST)
 	public void GameSave(@RequestBody GameDto game, @CookieValue("access_token") String access_token) {

@@ -11,6 +11,8 @@ public interface KakaoAPI {
 	//게임의 정보를 카카오 API에 저장시킴
 	public void SaveGameInfo(String access_Token, GameDto game);
 	
+	public void logout(String access_Token);
+	
 	
 
 }
