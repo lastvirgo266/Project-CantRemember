@@ -21,6 +21,6 @@ public interface GameService {
 	public void updateGame(GameEntity game);
 	
 	//delete
-	public void deleteGame(int gameId);
+	public void deleteGame(int userId, String game);
 
 }

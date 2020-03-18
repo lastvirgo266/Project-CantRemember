@@ -18,6 +18,7 @@ public interface KakaoAPI {
 	
 	public void saveGameInfoJpa(GameEntity game);
 	
+	public void deleteGame(int userId, String game);
 	
 
 }

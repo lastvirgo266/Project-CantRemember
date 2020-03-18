@@ -25,7 +25,7 @@ public class GameServiceImpl implements GameService {
 	
 	@Override
 	public List<GameEntity> selectGameInfo(int userId, String game){
-		return gameRepository.findAllUserIdAndGame(userId, game);
+		return gameRepository.findAllByUserIdAndGame(userId, game);
 	}
 	
 	@Override
@@ -46,8 +46,10 @@ public class GameServiceImpl implements GameService {
 	
 	
 	@Override
-	public void deleteGame(int gameId) {
-		gameRepository.deleteById(gameId);
+	public void deleteGame(int userId, String game) {
+		gameRepository.deleteByuserIdAndGame(userId, game);
 	}
+	
+	
 
 }

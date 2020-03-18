@@ -230,7 +230,7 @@ public class KakaoAPIImpl implements KakaoAPI {
 	         JsonParser parser = new JsonParser();
 	         JsonElement element = parser.parse(result);
 	         
-	         id = element.getAsJsonObject().get("access_token").getAsString();
+	         id = element.getAsJsonObject().get("id").getAsString();
 	         br.close();
 	         
             
@@ -245,6 +245,12 @@ public class KakaoAPIImpl implements KakaoAPI {
 	public void saveGameInfoJpa(GameEntity game) {
 		gameService.createGame(game);
 	}
+	
+	@Override
+	public void deleteGame(int userId, String game) {
+		gameService.deleteGame(userId, game);
+	}
+	
 	
 
 }

@@ -10,6 +10,7 @@ import remember.entity.GameEntity;
 
 @Repository
 public interface GameRepository extends CrudRepository<GameEntity, Integer> {
-	List<GameEntity> findAllUserIdAndGame(int userId, String Game);
+	List<GameEntity> findAllByUserIdAndGame(int userId, String game);
+	void deleteByuserIdAndGame(int userId, String game);
 
 }

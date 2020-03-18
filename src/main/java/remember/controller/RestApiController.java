@@ -96,6 +96,14 @@ public class RestApiController {
 	}
 	
 	
+	//Game Password Create
+	@RequestMapping(value="/game/delete", method = RequestMethod.DELETE)
+	public void GameDelete(@RequestBody GameEntity game, @CookieValue("id") int id) {
+		game.setUserId(id);
+		kakao.saveGameInfoJpa(game);
+	}
+	
+	
 	
 
 }
