@@ -69,7 +69,7 @@ public class KakaoAPIImpl implements KakaoAPI {
 			int responseCode = conn.getResponseCode();
 			log.info("responose : "+responseCode);
 			
-	           //    요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
+
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line = "";
             String result = "";
@@ -79,8 +79,7 @@ public class KakaoAPIImpl implements KakaoAPI {
             }
             System.out.println("response body : " + result);
             
-            
-            //    Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
+
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
             
