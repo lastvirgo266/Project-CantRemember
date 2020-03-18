@@ -10,8 +10,8 @@ src/main/resources/kakao.properties
 src/main/resources/database.properties
 
 ### secrets key ###
-/secrets
-secrets.tar
+/secret
+secret.tar
 
 ### STS ###
 .apt_generated
