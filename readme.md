@@ -34,5 +34,9 @@
 &nbsp;
 &nbsp;
 
+## CI
+  - Travis를 이용  
+  AWS 코드빌더를 쓰려고 했으나 학생계정이라고 해도 어떻게 될지 모르니 크레딧을 아끼고 싶고 CI구조에 대해 학습을 하기위해서 Travis가 좋다고 판단하여 사용
+
 ## 참고
   - AWS 에 올리기 : <https://jojoldu.tistory.com/259>
