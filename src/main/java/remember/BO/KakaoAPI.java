@@ -9,7 +9,7 @@ public interface KakaoAPI {
 
 	public List<String> getAccessToken(String authorize_code);
 	
-	//°ÔÀÓÀÇ Á¤º¸¸¦ Ä«Ä«¿À API¿¡ ÀúÀå½ÃÅ´
+	//ê²Œì„ì˜ ì •ë³´ë¥¼ ì¹´ì¹´ì˜¤ APIì— ì €ì¥ì‹œí‚´
 	public void SaveGameInfoToKakao(String access_Token, GameDto game);
 	
 	public void logout(String access_Token);
