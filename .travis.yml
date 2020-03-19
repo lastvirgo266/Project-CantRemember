@@ -6,8 +6,8 @@ before_install:
 - chmod +x gradlew
 - openssl aes-256-cbc -K $encrypted_f0572fcf58ff_key -iv $encrypted_f0572fcf58ff_iv -in secretfile.tar.enc -out secretfile.tar -d
 - ls
-- mkdir -p /src/main/resources
-- tar -xvf secretfile.tar -C /src/main/resources
+- sudo mkdir -p /src/main/resources
+- sudo tar -xvf secretfile.tar -C /src/main/resources
 cache:
   directories:
   - "$HOME/.m2/repository"
