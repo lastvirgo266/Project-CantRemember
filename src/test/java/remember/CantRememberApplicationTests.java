@@ -6,10 +6,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class CantRememberApplicationTests {
 
-//	@Test
-//	void contextLoads() {
-//		
-//	}
+	@Test
+	void contextLoads() {
+		
+	}
 	
 
 }

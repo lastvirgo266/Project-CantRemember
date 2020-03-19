@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-@PropertySource("kakao.properties")
+@PropertySource("classpath:kakao.properties")
 public class CantRememberApplication {
 
 	public static void main(String[] args) {
