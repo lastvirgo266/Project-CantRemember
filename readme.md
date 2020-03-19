@@ -1,5 +1,7 @@
-# 기억하기 귀찮아프로젝트 (개인 프로젝트)
+# 기억하기 귀찮아프로젝트 (개인 프로젝트)  
+[![Build Status](https://travis-ci.org/lastvirgo266/Project-CantRemember_API-Server.svg?branch=master)](https://travis-ci.org/lastvirgo266/Project-CantRemember_API-Server)
 --- 
+
   비밀번호를 기억하기 만들어서 만들어보는 프로젝트
 
 
