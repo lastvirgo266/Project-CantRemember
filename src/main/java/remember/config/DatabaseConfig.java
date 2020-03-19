@@ -22,9 +22,6 @@ import java.util.Properties;
 @PropertySource("classpath:/database.properties")
 public class DatabaseConfig {
 	
-	@Autowired
-	private ApplicationContext applicationContext;
-	
 	
 	@Bean
 	@ConfigurationProperties(prefix="spring.datasource.hikari")

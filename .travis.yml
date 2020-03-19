@@ -1,4 +1,6 @@
 language: java
+jdk:
+- openjdk8
 branches:
   only:
   - deploy
@@ -16,6 +18,7 @@ script: "./gradlew clean build"
 
 after_failure :
 - ls src/main/resources
+- cat /home/travis/build/lastvirgo266/Project-CantRemember_API-Server/build/reports/tests/test/index.html
 
 notifications:
   email:
