@@ -13,6 +13,10 @@ cache:
   - "$HOME/.m2/repository"
   - "$HOME/.gradle"
 script: "./gradlew clean build"
+
+after_failure :
+- ls
+
 notifications:
   email:
     recipients:
