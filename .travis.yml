@@ -4,7 +4,7 @@ branches:
   - deploy
 before_install:
 - chmod +x gradlew
-- tar -xvf secret.tar -C /src/main/resources
+- tar -xvf secretfile.tar -C /src/main/resources
 cache:
   directories:
   - "$HOME/.m2/repository"
