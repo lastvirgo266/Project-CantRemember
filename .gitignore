@@ -9,6 +9,12 @@ build/
 src/main/resources/kakao.properties
 src/main/resources/database.properties
 
+### bin file ###
+bin
+
+### secrets key ###
+properties.tar
+
 ### STS ###
 .apt_generated
 .classpath

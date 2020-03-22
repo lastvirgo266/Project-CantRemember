@@ -20,7 +20,6 @@ import java.util.Properties;
 
 @Configuration
 @PropertySource("classpath:/database.properties")
-//@EnableTransactionManagement //어노테이션 기반 트랜잭션 활성화
 public class DatabaseConfig {
 	
 	@Autowired

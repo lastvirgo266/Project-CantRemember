@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class UserEntity {
-	@Id //PK임을 나타냄
-	@GeneratedValue(strategy=GenerationType.AUTO)//기본키의 생성전략을 설정(DB에서 제공하는 기본키 생성전략을 따르게됨)
+	@Id //PK
+	@GeneratedValue(strategy=GenerationType.AUTO)//primarykey auto Increment
 	private int id;
 	
 	private String userId;
