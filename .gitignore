@@ -12,6 +12,9 @@ src/main/resources/database.properties
 ### secrets key ###
 properties.tar
 
+### bin file ###
+bin
+
 ### STS ###
 .apt_generated
 .classpath
